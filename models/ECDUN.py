@@ -441,9 +441,6 @@ class ECDUN(nn.Module):
         
         self._visualize_image(x_out / self.rgb_range, 'final_output', len(self.Fe_e))
         
-        # Store OCR info for potential loss computation
-        self._last_ocr_info = ocr_info_list
-        
         return x_out
     
     def compute_loss_with_ocr(self, pred, target):
