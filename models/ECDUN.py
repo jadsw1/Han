@@ -11,7 +11,6 @@ import os
 from .DM import ImprovedEncoder, ImprovedDecoder, ImprovedBottleneck
 from .Up_sample import ConvUpInterp, ConvUp, ConvDown
 from .residualprojectionModule import UCNet
-from .textureReconstructionModule import ConvDown, ConvUp
 from .edgemap import EdgeMap
 from .edgefeatureextractionModule import EAFM
 from .intermediatevariableupdateModule import EGIM
@@ -443,8 +442,7 @@ class ECDUN(nn.Module):
         self._visualize_image(x_out / self.rgb_range, 'final_output', len(self.Fe_e))
         
         # Store OCR info for potential loss computation
-        if hasattr(self, '_last_ocr_info'):
-            self._last_ocr_info = ocr_info_list
+        self._last_ocr_info = ocr_info_list
         
         return x_out
     
